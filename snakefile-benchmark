@@ -1,0 +1,25 @@
+import shutil
+
+configfile:
+    "benchmark_config.yaml"
+
+SAMPLES, = glob_wildcards(config['data']+"/{id}_1.fastq.gz")
+print(SAMPLES)
+
+rule all:
+    input:
+        expand(config['results_loc']+"/"+config['sample_size']+"/subsampled_reads/{sample}_reads_1.fastq.gz", sample=SAMPLES),
+        config['results_loc']+"/"+config['sample_size']+"/subsampled_reads/combined_1.fastq.gz",
+        expand(config['results_loc']+"/"+config['sample_size']+"/salmon/{sample}", sample=SAMPLES),
+        config['results_loc']+"/"+config['sample_size']+"/salmon/combined",
+        expand(config['results_loc']+"/"+config['sample_size']+"/transcript_counts/{sample}_transcript_count.txt", sample=SAMPLES),
+        config['results_loc']+"/"+config['sample_size']+"/transcript_counts/combined_transcript_count.txt",
+        expand(config['results_loc']+"/"+config['sample_size']+"/deseq2/{sample}_gene_count.txt", sample=SAMPLES),
+        config['results_loc']+"/"+config['sample_size']+"/deseq2/combined_gene_count.txt"
+
+include:    "rules/subsample.smk"
+include:    "rules/combine.smk"
+include:    "rules/salmon.smk"
+include:    "rules/count_trans.smk"
+include:    "rules/count_genes.smk"
+

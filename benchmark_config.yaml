@@ -1,0 +1,20 @@
+data:
+        "/gpfs/projects/GenomicsCore/benchmark/fastqs" # directory with fastq files
+
+results_loc:
+        "/gpfs/projects/GenomicsCore/benchmark/results" # directory where output will be saved
+
+threads:        
+        "20"
+
+species:
+        "human" # select "human", "mouse", "rat", or "neither" to choose the appropriate index for salmon
+
+index:
+        "" # set path to salmon genome index IF "neither" was chosen above
+
+gtf:
+        "" # only need to specify if species is "neither"
+
+sample_size:
+        "10000000"
