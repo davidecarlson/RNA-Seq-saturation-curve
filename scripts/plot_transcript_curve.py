@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-trans_counts = glob.glob('../results/*/transcript_counts/*_transcript_count.txt')
+trans_counts = glob.glob('results/*/transcript_counts/*_transcript_count.txt')
 
 print(trans_counts)
 
@@ -37,4 +37,4 @@ sns.lineplot(data=df, x="reads", y="transcripts", hue="accession", markers=True)
 plt.xlabel("Number of paired end reads per sample")
 plt.ylabel("Transcripts discovered")
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0, title='Samples')
-plt.savefig('../rnaseq_saturation_curve.png', bbox_inches='tight')
+plt.savefig('transcript_saturation_curve.png', bbox_inches='tight')
