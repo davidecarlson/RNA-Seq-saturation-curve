@@ -17,4 +17,4 @@ gtf:
         "" # only need to specify if species is "neither"
 
 sample_size:
-        "10000000"
+        "55000000"
